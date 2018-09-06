@@ -1,7 +1,7 @@
 # Sample Make File For Project:
 
 # Compiler and Linkers and other commands
-CC 			:= g++
+CC 			:= g++ -pthread -std=c++11
 RM			:= rm -rf
 
 # Target Binary
@@ -34,7 +34,7 @@ OBJFILES	:= $(patsubst $(SRCDIR)/%.cpp,$(BUILDDIR)/%.o,$(SRCFILES))
 # default make
 all: directories $(TARGET)
 
-run: 
+run: clean directories $(TARGET)
 	./bin/$(TARGET)
 
 # Link - $^ is all the pre-requisites object file names
